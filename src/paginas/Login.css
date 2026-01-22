@@ -1,0 +1,51 @@
+.login-fundo {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #5d91f0, #5d91f0);
+  }
+  
+  .login-cartao {
+    background: #fff;
+    width: 380px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+  }
+  
+  .login-titulo {
+    color: #2563eb;
+    margin-bottom: 6px;
+  }
+  
+  .login-subtitulo {
+    color: #6b7280;
+    margin-bottom: 28px;
+  }
+  
+  .login-cartao label {
+    font-size: 13px;
+    margin-bottom: 6px;
+    display: block;
+  }
+  
+  .login-cartao input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+  }
+  
+  .login-cartao button {
+    width: 100%;
+    padding: 12px;
+    background: #3b82f6;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+  }
+  
