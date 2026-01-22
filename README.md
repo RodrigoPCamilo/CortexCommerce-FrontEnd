@@ -22,17 +22,17 @@ Frontend do **CortexCommerce**, sistema de comércio que inclui autenticação, 
 
 - React.js (com Vite)
 - React Router DOM
-- TailwindCSS (opcional para estilos rápidos)
+- CSS (normal)
 - Node.js 18+
 
 ## Estrutura do Projeto
 
 src/
 ├─ components/ # Componentes reutilizáveis (Sidebar, ChatBubble, etc)
-├─ pages/ # Telas principais: Login, Register, Chatbot, Profile, UpdateProfile
+├─ pages/ # Telas principais: Login, Registro, Chatbot, Perfil, UpdatePerfil
 ├─ App.jsx # Roteamento entre páginas
 ├─ main.jsx # Entry point
-└─ styles/ # CSS global
+└─ styles/ # CSS 
 
 ## Telas Principais
 
