@@ -1,51 +1,77 @@
 .login-fundo {
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle at top, #5d91f0, #5d91f0);
+    background: linear-gradient(180deg, #5e9ce7, #5e9ce7);
   }
   
   .login-cartao {
-    background: #fff;
-    width: 380px;
-    padding: 40px;
+    width: 360px;
+    background: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 32px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
   
   .login-titulo {
     color: #2563eb;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
   
   .login-subtitulo {
+    font-size: 14px;
     color: #6b7280;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
   
-  .login-cartao label {
-    font-size: 13px;
-    margin-bottom: 6px;
+  .login-campo {
+    text-align: left;
+    margin-bottom: 16px;
+  }
+  
+  .login-campo label {
+    font-size: 14px;
+    font-weight: 500;
     display: block;
+    margin-bottom: 6px;
   }
   
-  .login-cartao input {
+  .login-campo input {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 18px;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    outline: none;
   }
   
-  .login-cartao button {
+  .login-campo input:focus {
+    border-color: #2563eb;
+  }
+  
+  .login-botao {
     width: 100%;
-    padding: 12px;
-    background: #3b82f6;
+    margin-top: 8px;
+    padding: 10px;
+    background-color: #3b82f6;
+    color: white;
     border: none;
-    border-radius: 8px;
-    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
     font-weight: 600;
+  }
+  
+  .login-botao:hover {
+    background-color: #2563eb;
+  }
+  
+  .login-link {
+    margin-top: 16px;
+    background: none;
+    border: none;
+    color: #2563eb;
+    cursor: pointer;
+    font-size: 14px;
   }
   

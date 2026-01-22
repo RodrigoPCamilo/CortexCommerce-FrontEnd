@@ -1,47 +1,55 @@
-import {link, useNavigate} from "react-router-dom";
-import { use } from "react";
-import "./login.css";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
-export default function Login() {
-    const navigate = useNavigate();
-    const [email, setEmail] = useState("");
-    const[senha, setSenha] = useState("");
+function Login() {
+  const navigate = useNavigate();
 
-    function handleLogin(e) {
-        e.preventDefalt();
-        if(email && senha){
-            navigate("/chatbot");
-        }
-    }
-    return(
-        <div className="login-fundo">
-            <div className="login-cartao">
-                <h1 className="login-titulo">CortexCommercer</h1>
-                <p className="login-subtitulo">faça login para continuar</p>
-                <form onSubmit={handleLogin}>
-                    <label>Email</label>
-                    <input
-                        type="email"
-                        placeholder="seu@email.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-                    <label>Senha</label>
-                    <input
-                        type="Senha"
-                        placeholder="********"
-                        value={senha}
-                        onChange={(e) => setSenha(e.target.value)}
-                    />
+    // Depois aqui você integra com a API
+    navigate("/chatbot");
+  };
 
-                    <button type="Entrar">Entrar</button>
-                </form>
+  return (
+    <div className="login-fundo">
+      <div className="login-cartao">
+        <h1 className="login-titulo">CortexCommerce</h1>
+        <p className="login-subtitulo">Faça login para continuar</p>
 
-                <link className="login-link" to="/registro">
-                Cadastrar Usuário
-                </link>
-            </div>
-        </div>
-    )
+        <form onSubmit={handleSubmit}>
+          <div className="login-campo">
+            <label>Email</label>
+            <input
+              type="email"
+              placeholder="seu@email.com"
+              required
+            />
+          </div>
+
+          <div className="login-campo">
+            <label>Senha</label>
+            <input
+              type="password"
+              placeholder="********"
+              required
+            />
+          </div>
+
+          <button type="submit" className="login-botao">
+            Entrar
+          </button>
+        </form>
+
+        <button
+          className="login-link"
+          onClick={() => navigate("/registro")}
+        >
+          Cadastrar usuário
+        </button>
+      </div>
+    </div>
+  );
 }
+
+export default Login;
