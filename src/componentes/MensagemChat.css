@@ -1,0 +1,26 @@
+.mensagem {
+    max-width: 55%;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  
+  .mensagem.bot {
+    background: #f1f5f9;
+    align-self: flex-start;
+  }
+  
+  .mensagem.usuario {
+    background: #2563eb;
+    color: white;
+    align-self: flex-end;
+  }
+  
+  .hora {
+    display: block;
+    font-size: 16px;
+    margin-top: 6px;
+    opacity: 0.7;
+  }
+  
