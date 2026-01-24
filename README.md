@@ -28,7 +28,7 @@ Frontend do **CortexCommerce**, sistema de comércio que inclui autenticação, 
 ## Estrutura do Projeto
 
 src/
-├─ components/ # Componentes reutilizáveis (Sidebar, ChatBubble, etc)
+├─ components/ # Componentes reutilizáveis (MensagemChat, MenuLateral, etc)
 ├─ pages/ # Telas principais: Login, Registro, Chatbot, Perfil, UpdatePerfil
 ├─ App.jsx # Roteamento entre páginas
 ├─ main.jsx # Entry point

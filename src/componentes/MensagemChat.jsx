@@ -1,12 +1,11 @@
 import "./MensagemChat.css";
 
-function MensagemChat({ tipo, texto, hora }) {
+export default function MensagemChat({ tipo, texto }) {
   return (
     <div className={`mensagem ${tipo}`}>
-      <span>{texto}</span>
-      <span className="hora">{hora}</span>
+      <div className="bolha">
+        {texto}
+      </div>
     </div>
   );
 }
-
-export default MensagemChat;

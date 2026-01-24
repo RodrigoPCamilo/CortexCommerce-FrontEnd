@@ -1,45 +1,57 @@
 .menu-lateral {
-    width: 220px;
-    height: 100vh;
-    background: #648aaf;
-    border-right: 1px solid #e5e7eb;
-    padding: 24px 16px;
-    position: fixed;
-    left: 0;
-    top: 0;
-  }
-  
-  .logo {
-    font-size: 35px;
-    font-weight: 600;
-    color: #2563eb;
-    margin-bottom: 30px;
-  }
-  
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 20px 16px;
-    border-radius: 10px;
-    text-decoration: none;
-    color: #555d69;
-    font-size: 15px;
-    transition: background 0.2s;
-  }
-  
-  .item:hover {
-    background: #9aa7c2;
-  }
-  
-  .item.ativo {
-    background: #0e3486;
-    color: rgb(253, 253, 253);
-  }
-  
+  width: 240px;
+  height: 100vh;
+  background: #ffffff;
+  padding: 20px;
+  border-right: 1px solid #e5e7eb;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 32px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.item:hover {
+  background-color: #f1f5f9;
+}
+
+.item.ativo {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: #3d2e2e;
+  font-weight: 800;
+  padding: 12px 14px;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 8px;
+}
+
+.logout-btn:hover {
+  background-color: #f34d4d;
+}

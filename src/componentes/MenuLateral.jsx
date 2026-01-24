@@ -1,27 +1,43 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./MenuLateral.css";
 
-function MeenuLateral() {
-    return(
-        <aside className="Menu-lateral">
-            <h1 className="logo">CortexCommerce</h1>
+export default function MenuLateral() {
+  const navigate = useNavigate();
 
-            <nav>
-                <NavLink
-                    to="/chatbot"
-                    className={({ isActive }) => (isActive ? "item ativo" : "item")}
-                >Chatbot IA
-                </NavLink>
+  const handleLogout = () => {
+    // futuro: limpar token / usuário logado
+    navigate("/");
+  };
 
-                <NavLink
-                    to="/perfil"
-                    className={({ isActive }) => (isActive ? "item ativo" : "item")}
-                >
-                    Perfil do Usuario
-                </NavLink>
-            </nav>
-        </aside>
-    );
-    
+  return (
+    <aside className="menu-lateral">
+      <div>
+        <h1 className="logo">CortexCommerce</h1>
+
+        <nav>
+          <NavLink
+            to="/chatbot"
+            className={({ isActive }) =>
+              isActive ? "item ativo" : "item"
+            }
+          >
+            Chatbot
+          </NavLink>
+
+          <NavLink
+            to="/perfil"
+            className={({ isActive }) =>
+              isActive ? "item ativo" : "item"
+            }
+          >
+            Perfil do Usuário
+          </NavLink>
+        </nav>
+      </div>
+
+      <button className="logout-btn" onClick={handleLogout}>
+        Sair
+      </button>
+    </aside>
+  );
 }
-export default MeenuLateral;
