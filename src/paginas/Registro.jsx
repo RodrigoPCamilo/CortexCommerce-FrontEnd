@@ -31,7 +31,7 @@ function Registro() {
     }
 
     function validarSenha(senha) {
-        return /^(?=.*[A-Za-z])(?=.*\d).{8,}$/.test(senha);
+        return /^(?=.*[A-Za-z])(?=.*\d).{6,}$/.test(senha);
     }
 
     const handleSubmit = (e) => {
@@ -44,7 +44,7 @@ function Registro() {
         }
 
         if (!validarSenha(form.senha)) {
-            novosErros.senha = "Senha fraca (mín. 8 caracteres, letra e número)";
+            novosErros.senha = "Senha fraca (mín. 6 caracteres, letra e número)";
 
         }
         if (Object.keys(novosErros).length > 0) {
@@ -97,6 +97,7 @@ function Registro() {
                         <div className="campo-senha">
                             <input
                                 name="senha"
+                                placeholder="*********"
                                 type={mostrarSenha ? "text" : "password"}
                                 onChange={handleChange}
                                 required
