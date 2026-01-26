@@ -11,12 +11,10 @@ import Chatbot from "./paginas/Chatbot";
 function App() {
   return (
     <Routes>
-      {/* Rotas públicas */}
       <Route path="/" element={<Navigate to="/login" />} />
       <Route path="/login" element={<Login />} />
       <Route path="/registro" element={<Registro />} />
 
-      {/* Rotas protegidas */}
       <Route element={<PrivateRoute />}>
         <Route element={<Layout />}>
           <Route path="/chatbot" element={<Chatbot />} />

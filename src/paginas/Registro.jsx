@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import UsuarioAPI from "../services/UsuarioAPI"; 
+import UsuarioAPI from "../services/UsuarioAPI";
 import "./Registro.css";
 
 function Registro() {
@@ -11,8 +11,8 @@ function Registro() {
     email: "",
     senha: "",
     categoriaFavorita: "",
-    orcamentoMedio: "",
-    lojaPreferida: ""
+    orcamentoMedio: 0,
+    lojaPreferida: 0
   });
 
   const [erros, setErros] = useState({});
@@ -21,22 +21,27 @@ function Registro() {
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+
+    setForm({
+      ...form,
+      [name]:
+        name === "orcamentoMedio" || name === "lojaPreferida"
+          ? Number(value)
+          : value
+    });
   }
 
- 
   function validarEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
- 
   function validarSenha(senha) {
     return /^(?=.*[A-Za-z])(?=.*\d).{6,}$/.test(senha);
   }
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const novosErros = {};
 
     if (!validarEmail(form.email)) {
@@ -54,21 +59,25 @@ function Registro() {
 
     setErros({});
 
+    const confirmar = window.confirm(
+      "Deseja realmente continuar com este cadastro?"
+    );
+
+    if (!confirmar) {
+      return; 
+    }
+
     try {
-      
-      const usuarioCriado = await UsuarioAPI.criarAsync(form);
+      await UsuarioAPI.criarAsync(form);
 
-      
-      setToast("Cadastro realizado com sucesso!");
+      setToast("Cadastro feito com sucesso!");
 
-      
       setTimeout(() => {
         navigate("/");
       }, 1500);
+
     } catch (error) {
       console.error("Erro ao criar usuário:", error);
-
-      
       setToast(
         error.response?.data?.mensagem ||
         "Erro ao cadastrar usuário. Tente novamente."
@@ -89,7 +98,7 @@ function Registro() {
             <label>Nome</label>
             <input
               name="nome"
-              placeholder="Nome Completo"
+              placeholder="Nome completo"
               onChange={handleChange}
               required
             />
@@ -99,7 +108,7 @@ function Registro() {
             <label>Email</label>
             <input
               name="email"
-              placeholder="Email"
+              placeholder="email@exemplo.com"
               type="email"
               onChange={handleChange}
               required
@@ -112,7 +121,7 @@ function Registro() {
             <div className="campo-senha">
               <input
                 name="senha"
-                placeholder="*********"
+                placeholder="********"
                 type={mostrarSenha ? "text" : "password"}
                 onChange={handleChange}
                 required
@@ -132,7 +141,7 @@ function Registro() {
             <label>Categoria Favorita</label>
             <input
               name="categoriaFavorita"
-              placeholder="Ex: Eletrônicos, Moda, Esportes..."
+              placeholder="Ex: eletrônicos, moda, games etc."
               onChange={handleChange}
             />
           </div>
@@ -141,18 +150,26 @@ function Registro() {
             <label>Orçamento Médio</label>
             <input
               name="orcamentoMedio"
-              placeholder="R$ 1000,00"
+              type="number"
+              placeholder="Valor médio em R$:"
               onChange={handleChange}
             />
           </div>
 
           <div className="registro-field">
             <label>Loja Preferida</label>
-            <input
+            <select
               name="lojaPreferida"
-              placeholder="Ex: Amazon, Magazine Luiza..."
+              value={form.lojaPreferida}
               onChange={handleChange}
-            />
+              required
+            >
+              <option value={0}>Shopee</option>
+              <option value={1}>Mercado Livre</option>
+              <option value={2}>Amazon</option>
+              <option value={3}>Magazine Luiza</option>
+              <option value={4}>Loja Oficial</option>
+            </select>
           </div>
 
           <button type="submit" className="registro-botao">
@@ -160,10 +177,7 @@ function Registro() {
           </button>
         </form>
 
-        <button
-          className="registro-link"
-          onClick={() => navigate("/")}
-        >
+        <button className="registro-link" onClick={() => navigate("/")}>
           Já tenho uma conta
         </button>
       </div>

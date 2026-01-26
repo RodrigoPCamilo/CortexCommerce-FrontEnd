@@ -5,7 +5,6 @@ export default function MenuLateral() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // futuro: limpar token / usuário logado
     navigate("/");
   };
 

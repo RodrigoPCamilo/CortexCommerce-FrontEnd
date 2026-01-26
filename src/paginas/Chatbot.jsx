@@ -5,7 +5,7 @@ import "./Chatbot.css";
 
 export default function Chatbot() {
   const [mensagens, setMensagens] = useState([
-    { tipo: "bot", texto: "Olá! Como posso te ajudar hoje?" }
+    { tipo: "Bot CortexCommerce", texto: "Olá, sou 🤖🧠🛒 um assistente virtual E-commercer! Como posso te ajudar hoje?" }
   ]);
   const [texto, setTexto] = useState("");
   const [digitando, setDigitando] = useState(false);
@@ -25,7 +25,7 @@ export default function Chatbot() {
       console.error("Usuário não logado! usuarioId indefinido");
       setMensagens(prev => [
         ...prev,
-        { tipo: "bot", texto: "Você precisa estar logado para usar o chat." }
+        { tipo: "Bot CortexCommerce", texto: "Você precisa estar logado para usar o chat." }
       ]);
       return;
     }
@@ -36,7 +36,7 @@ export default function Chatbot() {
     setMensagens(prev => [...prev, { tipo: "usuario", texto: pergunta }]);
     setDigitando(true);
 
-    setMensagens(prev => [...prev, { tipo: "bot", texto: "Estou pensando..." }]);
+    setMensagens(prev => [...prev, { tipo: "Bot CortexCommerce", texto: "Estou pensando..." }]);
 
     try {
       console.log("Enviando para API:", pergunta, "usuarioId:", usuarioId);
@@ -47,7 +47,7 @@ export default function Chatbot() {
       setMensagens(prev => {
         const msgs = [...prev];
         msgs.pop(); 
-        msgs.push({ tipo: "bot", texto: respostaBot });
+        msgs.push({ tipo: "Bot CortexCommerce", texto: respostaBot });
         return msgs;
       });
 
@@ -56,7 +56,7 @@ export default function Chatbot() {
       setMensagens(prev => {
         const msgs = [...prev];
         msgs.pop();
-        msgs.push({ tipo: "bot", texto: "Ops! Ocorreu um erro ao processar sua pergunta." });
+        msgs.push({ tipo: "Bot CortexCommerce", texto: "Ops! Ocorreu um erro ao processar sua pergunta." });
         return msgs;
       });
     } finally {
@@ -73,8 +73,8 @@ export default function Chatbot() {
       <div className="chat-mensagens">
         {mensagens.map((msg, idx) => (
           <div key={idx} className={`mensagem ${msg.tipo}`}>
-            <b>{msg.tipo === "bot" ? "Bot" : "Você"}:</b>{" "}
-            {msg.tipo === "bot" ? (
+            <b>{msg.tipo === "Bot CortexCommerce" ? "Bot CortexCommerce" : "Você"}:</b>{" "}
+            {msg.tipo === "Bot CortexCommerce" ? (
               <ReactMarkdown
                 children={msg.texto}
                 components={{

@@ -30,13 +30,12 @@ function Login() {
     try {
       const data = await AuthAPI.loginAsync(form.email, form.senha);
 
-      // Salva dados no localStorage
       localStorage.setItem("token", data.token);
       localStorage.setItem("email", data.email);
       localStorage.setItem("expiraEm", data.expiraEm);
-      localStorage.setItem("usuarioId", data.id); // ✅ ESSENCIAL pro Chatbot
+      localStorage.setItem("usuarioId", data.id);
 
-      // Lembrar email, se marcado
+
       if (form.lembrar) {
         localStorage.setItem("emailSalvo", form.email);
       } else {

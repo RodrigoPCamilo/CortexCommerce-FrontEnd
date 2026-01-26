@@ -11,15 +11,15 @@ const IaAPI = {
     }
   },
 
-  async historicoAsync(usuarioId) {
+  async historicoAsync() {
     try {
-      const response = await api.get(`/ia/historico/${usuarioId}`);
+      const response = await api.get("/ia/historico");
       return response.data;
     } catch (error) {
       console.error("Erro ao buscar histórico", error);
       throw error;
     }
-  },
+  }
 };
 
 export default IaAPI;
