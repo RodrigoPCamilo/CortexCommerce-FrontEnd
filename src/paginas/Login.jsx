@@ -29,12 +29,14 @@ function Login() {
 
     try {
       const data = await AuthAPI.loginAsync(form.email, form.senha);
-      
 
+      // Salva dados no localStorage
       localStorage.setItem("token", data.token);
       localStorage.setItem("email", data.email);
       localStorage.setItem("expiraEm", data.expiraEm);
+      localStorage.setItem("usuarioId", data.id); // ✅ ESSENCIAL pro Chatbot
 
+      // Lembrar email, se marcado
       if (form.lembrar) {
         localStorage.setItem("emailSalvo", form.email);
       } else {
@@ -43,6 +45,7 @@ function Login() {
 
       navigate("/chatbot");
     } catch (err) {
+      console.error("Erro no login:", err);
       setErros({ geral: "Email ou senha inválidos" });
     }
   };
@@ -78,7 +81,11 @@ function Login() {
                 value={form.senha}
                 onChange={handleChange}
               />
-              <button type="button" className="btn-olho" onClick={() => setMostrarSenha(!mostrarSenha)}>
+              <button
+                type="button"
+                className="btn-olho"
+                onClick={() => setMostrarSenha(!mostrarSenha)}
+              >
                 👁
               </button>
             </div>
@@ -87,12 +94,19 @@ function Login() {
 
           <div className="login-opcoes">
             <label>
-              <input type="checkbox" name="lembrar" checked={form.lembrar} onChange={handleChange} />
+              <input
+                type="checkbox"
+                name="lembrar"
+                checked={form.lembrar}
+                onChange={handleChange}
+              />
               Lembrar-me
             </label>
           </div>
 
-          <button type="submit" className="login-botao">Entrar</button>
+          <button type="submit" className="login-botao">
+            Entrar
+          </button>
         </form>
 
         <button className="login-link" onClick={() => navigate("/registro")}>

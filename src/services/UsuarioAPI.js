@@ -1,9 +1,9 @@
-import { HTTPClient } from "./client";
+import api from "./client"; 
 
 const UsuarioAPI = {
   async obterAsync(id) {
     try {
-      const response = await HTTPClient.get(`/Usuario/${id}`);
+      const response = await api.get(`/Usuario/${id}`);
       return response.data;
     } catch (error) {
       console.error("Erro ao obter usuário", error);
@@ -13,7 +13,7 @@ const UsuarioAPI = {
 
   async criarAsync(dados) {
     try {
-      const response = await HTTPClient.post("/Usuario", dados);
+      const response = await api.post("/Usuario", dados);
       return response.data;
     } catch (error) {
       console.error("Erro ao criar usuário", error);
@@ -23,7 +23,7 @@ const UsuarioAPI = {
 
   async atualizarAsync(dados) {
     try {
-      const response = await HTTPClient.put("/Usuario", dados);
+      const response = await api.put("/Usuario", dados);
       return response.data;
     } catch (error) {
       console.error("Erro ao atualizar usuário", error);

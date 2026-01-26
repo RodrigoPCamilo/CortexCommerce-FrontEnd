@@ -2,11 +2,11 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./paginas/Login";
 import Registro from "./paginas/Registro";
-import Chatbot from "./paginas/Chatbot";
 import Perfil from "./paginas/Perfil";
 import UpdatePerfil from "./paginas/UpdatePerfil";
 import Layout from "./layout/Layout";
 import PrivateRoute from "./componentes/routes/PrivateRoute";
+import Chatbot from "./paginas/Chatbot";
 
 function App() {
   return (

@@ -1,13 +1,9 @@
-import { HTTPClient } from "./client";
+import api from "./client";
 
 const IaAPI = {
   async perguntarAsync(usuarioId, pergunta) {
     try {
-      const response = await HTTPClient.post(
-        `/ia/perguntar/${usuarioId}`,
-        { pergunta }
-      );
-
+      const response = await api.post(`/ia/perguntar/${usuarioId}`, { pergunta });
       return response.data;
     } catch (error) {
       console.error("Erro ao perguntar para IA", error);
@@ -17,10 +13,7 @@ const IaAPI = {
 
   async historicoAsync(usuarioId) {
     try {
-      const response = await HTTPClient.get(
-        `/ia/historico/${usuarioId}`
-      );
-
+      const response = await api.get(`/ia/historico/${usuarioId}`);
       return response.data;
     } catch (error) {
       console.error("Erro ao buscar histórico", error);

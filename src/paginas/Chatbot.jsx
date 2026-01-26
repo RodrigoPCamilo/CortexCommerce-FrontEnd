@@ -1,62 +1,64 @@
-import { useEffect, useRef, useState } from "react";
-import MensagemChat from "../componentes/MensagemChat";
-import api from "../services/client";
+import { useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
+import IaAPI from "../services/IaAPI";
 import "./Chatbot.css";
-
 
 export default function Chatbot() {
   const [mensagens, setMensagens] = useState([
     { tipo: "bot", texto: "Olá! Como posso te ajudar hoje?" }
   ]);
-
   const [texto, setTexto] = useState("");
   const [digitando, setDigitando] = useState(false);
   const fimChatRef = useRef(null);
 
-  // Scroll automático
+
   useEffect(() => {
     fimChatRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [mensagens, digitando]);
 
-  // Pega o usuário logado
-  const usuarioId = localStorage.getItem("usuarioId"); // ou outro campo que você salve no login
+  const usuarioId = Number(localStorage.getItem("usuarioId"));
 
   async function enviarMensagem() {
     if (!texto.trim()) return;
 
+    if (!usuarioId) {
+      console.error("Usuário não logado! usuarioId indefinido");
+      setMensagens(prev => [
+        ...prev,
+        { tipo: "bot", texto: "Você precisa estar logado para usar o chat." }
+      ]);
+      return;
+    }
+
     const pergunta = texto;
     setTexto("");
 
-    // Adiciona a mensagem do usuário
     setMensagens(prev => [...prev, { tipo: "usuario", texto: pergunta }]);
     setDigitando(true);
 
+    setMensagens(prev => [...prev, { tipo: "bot", texto: "Estou pensando..." }]);
+
     try {
-      // Mensagem temporária de “digitando”
-      setMensagens(prev => [...prev, { tipo: "bot", texto: "Estou analisando sua pergunta..." }]);
+      console.log("Enviando para API:", pergunta, "usuarioId:", usuarioId);
+      const response = await IaAPI.perguntarAsync(usuarioId, pergunta);
+      const respostaBot = response?.resposta || "Não consegui processar sua pergunta.";
 
-      // Chamada à API
-      const response = await api.post(`/ia/perguntar/${usuarioId}`, { pergunta });
-      const respostaBot = response.data.resposta;
 
-      // Atualiza a última mensagem do bot com a resposta real
       setMensagens(prev => {
         const msgs = [...prev];
-        msgs.pop();
+        msgs.pop(); 
         msgs.push({ tipo: "bot", texto: respostaBot });
         return msgs;
       });
 
     } catch (error) {
       console.error("Erro no Chatbot:", error);
-
       setMensagens(prev => {
         const msgs = [...prev];
         msgs.pop();
         msgs.push({ tipo: "bot", texto: "Ops! Ocorreu um erro ao processar sua pergunta." });
         return msgs;
       });
-
     } finally {
       setDigitando(false);
     }
@@ -69,22 +71,35 @@ export default function Chatbot() {
       </div>
 
       <div className="chat-mensagens">
-        {mensagens.map((msg, index) => (
-          <MensagemChat key={index} tipo={msg.tipo} texto={msg.texto} />
+        {mensagens.map((msg, idx) => (
+          <div key={idx} className={`mensagem ${msg.tipo}`}>
+            <b>{msg.tipo === "bot" ? "Bot" : "Você"}:</b>{" "}
+            {msg.tipo === "bot" ? (
+              <ReactMarkdown
+                children={msg.texto}
+                components={{
+                  a: ({node, ...props}) => <a {...props} target="_blank" rel="noopener noreferrer" />
+                }}
+              />
+            ) : (
+              msg.texto
+            )}
+          </div>
         ))}
 
-        {digitando && <MensagemChat tipo="bot" texto="Digitando..." />}
+        {digitando && <div className="mensagem bot">Bot: Digitando...</div>}
         <div ref={fimChatRef} />
       </div>
 
       <div className="chat-input">
         <input
+          type="text"
           value={texto}
           onChange={e => setTexto(e.target.value)}
           onKeyDown={e => e.key === "Enter" && enviarMensagem()}
           placeholder="Digite sua pergunta..."
         />
-        <button onClick={enviarMensagem}>➤</button>
+        <button onClick={enviarMensagem}>Enviar</button>
       </div>
     </div>
   );
