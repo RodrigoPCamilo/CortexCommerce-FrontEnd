@@ -1,116 +1,139 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .login-fundo {
-    width: 100%;
-    height: 100vh;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(180deg, #5e9ce7, #5e9ce7);
-  }
-  
-  .login-cartao {
-    width: 360px;
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 32px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .login-titulo {
-    color: #2563eb;
-    margin-bottom: 8px;
-  }
-  
-  .login-subtitulo {
-    font-size: 18px;
-    color: #6b7280;
-    margin-bottom: 24px;
-  }
-  
-  .login-campo {
-    text-align: left;
-    margin-bottom: 16px;
-  }
-  
-  .login-campo label {
-    font-size: 14px;
-    font-weight: 500;
-    display: block;
-    margin-bottom: 6px;
-  }
-  
-  .login-campo input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #d1d5db;
-    outline: none;
-  }
-  
-  .login-campo input:focus {
-    border-color: #2563eb;
-  }
-  
-  .login-botao {
-    width: 100%;
-    margin-top: 8px;
-    padding: 10px;
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-  }
-  
-  .login-botao:hover {
-    background-color: #2563eb;
-  }
-  
-  .login-link {
-    margin-top: 16px;
-    background: none;
-    border: none;
-    color: #2563eb;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  .campo-senha {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  
-  .campo-senha input {
-    width: 100%;
-    padding-right: 42px;
-  }
-  
-  .btn-olho {
-    position: absolute;
-    right: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: #6b7280;
-  }
-  
-  .btn-olho:hover {
-    color: #2563eb;
-  }
-  .erro-texto {
-    color: #dc2626;
-    font-size: 12px;
-    margin-top: 4px;
-    display: block;
-  }
-  
-  .login-opcoes {
-    margin: 12px 0;
-    font-size: 14px;
-  }
-  
-  
-  
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #c6d7ec, #eef7f6);
+  font-family: sans-serif;
+}
+
+.login-cartao {
+  width: 400px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.login-titulo {
+  text-align: center;
+  color: #2563eb;
+  margin-bottom: 4px;
+}
+
+.login-subtitulo {
+  text-align: center;
+  font-size: 16px;
+  color: #4c515c;
+  margin-bottom: 24px;
+}
+
+.login-campo {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.login-campo label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.login-campo input[type="email"],
+.login-campo input[type="password"],
+.login-campo input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dfe5ee;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+}
+
+.login-campo input:focus {
+  border-color: #2563eb;
+}
+
+
+.campo-senha {
+  position: relative;
+  width: 100%; 
+  display: flex;
+  align-items: center;
+}
+
+.campo-senha input {
+  padding-right: 40px !important; 
+}
+
+.btn-olho {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-opcoes {
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #4c515c;
+}
+
+.login-opcoes label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.login-botao {
+  width: 100%;
+  padding: 12px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.login-botao:hover {
+  background-color: #1d4ed8;
+}
+
+.login-link {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #2563eb;
+  margin-top: 16px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+.erro-texto {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}

@@ -1,8 +1,9 @@
-/* Container geral */
+
 .perfil-container {
     height: 100vh;
     width: 100%;
-    background: linear-gradient(180deg, #c6d7ec, #eef7f6);
+    border-radius: 10px;
+    background-color: #587dce;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +12,6 @@
     
 }
 
-/* Wrapper central */
 .perfil-wrapper {
     width: 100%;
     max-width: 900px;
@@ -21,7 +21,6 @@
     gap: 20px;
 }
 
-/* Cards base */
 .perfil-card {
     background: #ffffff;
     padding: 24px;
@@ -29,7 +28,6 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* 🔹 Bloco Perfil (topo) */
 .perfil-card h2 {
     margin-bottom: 16px;
     font-size: 20px;
@@ -42,14 +40,12 @@
     color: #444;
 }
 
-/* 🔹 Bloco Histórico */
 .historico-container {
     flex: 1;
     overflow-y: auto;
     padding-right: 8px;
 }
 
-/* Scroll bonito */
 .historico-container::-webkit-scrollbar {
     width: 6px;
 }
@@ -63,7 +59,6 @@
     background: transparent;
 }
 
-/* Itens do histórico */
 .historico-item {
     border-top: 1px solid #e0e0e0;
     padding-top: 12px;
@@ -92,13 +87,12 @@
     color: #777;
 }
 
-/* Estados */
 .perfil-loading,
 .perfil-erro {
     font-size: 18px;
     color: #333;
 }
-/* Markdown da resposta da IA */
+
 .historico-resposta {
     margin-top: 10px;
     background: #f7f9fc;
@@ -109,7 +103,6 @@
     font-size: 14px;
 }
 
-/* Títulos do markdown */
 .historico-resposta h1,
 .historico-resposta h2,
 .historico-resposta h3 {
@@ -118,13 +111,11 @@
     color: #1f3a5f;
 }
 
-/* Listas */
 .historico-resposta ul {
     padding-left: 20px;
     margin: 6px 0;
 }
 
-/* Código inline */
 .historico-resposta code {
     background: #edf2f7;
     padding: 3px 6px;
@@ -133,7 +124,6 @@
     font-size: 13px;
 }
 
-/* Blocos de código */
 .historico-resposta pre {
     background: #1e293b;
     color: #e5e7eb;
@@ -142,7 +132,6 @@
     overflow-x: auto;
 }
 
-/* Negrito */
 .historico-resposta strong {
     color: #0f172a;
 }
